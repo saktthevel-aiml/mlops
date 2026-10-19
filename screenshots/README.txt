@@ -1,0 +1,1 @@
+This folder contains proof artifacts for the assignment report. The images in this folder are copied from the project’s generated EDA and model artifacts and are intended to support the final documentation.

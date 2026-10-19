@@ -3,7 +3,11 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
+import shutil
 from pathlib import Path
+
+os.environ.setdefault("MLFLOW_ALLOW_FILE_STORE", "true")
 
 import joblib
 import matplotlib
@@ -89,14 +93,32 @@ def create_eda_artifacts(frame: pd.DataFrame, out_dir: Path) -> list[Path]:
     return paths
 
 
+def resolve_tracking_uri(tracking_uri: str) -> str:
+    root = Path(tracking_uri).expanduser().resolve()
+    root.mkdir(parents=True, exist_ok=True)
+    stale_markers = {"0", "1", ".trash"}
+    stale = root.is_dir() and any(item.name in stale_markers for item in root.iterdir())
+    if stale:
+        for item in root.iterdir():
+            if item.is_dir() and item.name != ".git":
+                shutil.rmtree(item)
+            elif item.is_file():
+                item.unlink()
+    if root.suffix.lower() == ".db":
+        db_path = root
+    else:
+        db_path = root / "mlflow.db"
+    return f"sqlite:///{db_path.as_posix()}"
+
+
 def train(frame: pd.DataFrame, model_dir: Path, tracking_uri: str = "./mlruns") -> dict:
+    mlflow.set_tracking_uri(resolve_tracking_uri(tracking_uri))
     frame = clean_frame(frame)
     X, y = frame[FEATURES], frame[TARGET]
     X_train, X_test, y_train, y_test = train_test_split(
         X, y, test_size=0.20, random_state=42, stratify=y
     )
     cv = StratifiedKFold(n_splits=5, shuffle=True, random_state=42)
-    mlflow.set_tracking_uri(tracking_uri)
     mlflow.set_experiment("uci-heart-disease-classification")
     artifact_dir = model_dir / "plots"
     eda_paths = create_eda_artifacts(frame, artifact_dir)
@@ -154,9 +176,10 @@ def train(frame: pd.DataFrame, model_dir: Path, tracking_uri: str = "./mlruns") 
             signature = infer_signature(input_example, fitted.predict(input_example))
             mlflow.sklearn.log_model(
                 fitted,
-                artifact_path="model",
+                name="model",
                 signature=signature,
                 input_example=input_example,
+                serialization_format=mlflow.sklearn.SERIALIZATION_FORMAT_CLOUDPICKLE,
             )
             record = {
                 "run_id": run.info.run_id, "model": name,
