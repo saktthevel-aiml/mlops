@@ -1,0 +1,9 @@
+services:
+  api:
+    build: .
+    image: heart-disease-api:local
+    ports:
+      - "8000:8000"
+    environment:
+      MODEL_PATH: /app/artifacts/model.joblib
+    restart: unless-stopped

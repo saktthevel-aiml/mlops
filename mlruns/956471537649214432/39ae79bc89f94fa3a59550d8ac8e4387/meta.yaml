@@ -1,0 +1,15 @@
+artifact_uri: /Users/skv695@apac.comcast.com/Documents/vs_code/mlops/mlops/mlruns/956471537649214432/39ae79bc89f94fa3a59550d8ac8e4387/artifacts
+end_time: 1792422267821
+entry_point_name: ''
+experiment_id: '956471537649214432'
+lifecycle_stage: active
+run_id: 39ae79bc89f94fa3a59550d8ac8e4387
+run_name: random_forest
+run_uuid: 39ae79bc89f94fa3a59550d8ac8e4387
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1792422262825
+status: 3
+tags: []
+user_id: skv695@apac.comcast.com

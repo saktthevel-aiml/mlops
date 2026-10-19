@@ -1,0 +1,47 @@
+{
+  "selected_model": "logistic_regression",
+  "selection_metric": "mean cross-validation ROC-AUC",
+  "results": [
+    {
+      "run_id": "52e69641a9d848aa8e32832d2137aa11",
+      "model": "logistic_regression",
+      "best_params": {
+        "classifier__C": 0.1
+      },
+      "cv_best_roc_auc": 0.9000754479015349,
+      "test_accuracy": 0.8524590163934426,
+      "test_precision": 0.8064516129032258,
+      "test_recall": 0.8928571428571429,
+      "test_roc_auc": 0.9577922077922079
+    },
+    {
+      "run_id": "39ae79bc89f94fa3a59550d8ac8e4387",
+      "model": "random_forest",
+      "best_params": {
+        "classifier__max_depth": 4,
+        "classifier__n_estimators": 250
+      },
+      "cv_best_roc_auc": 0.8903297185905881,
+      "test_accuracy": 0.8852459016393442,
+      "test_precision": 0.8387096774193549,
+      "test_recall": 0.9285714285714286,
+      "test_roc_auc": 0.9577922077922078
+    }
+  ],
+  "feature_order": [
+    "age",
+    "sex",
+    "cp",
+    "trestbps",
+    "chol",
+    "fbs",
+    "restecg",
+    "thalach",
+    "exang",
+    "oldpeak",
+    "slope",
+    "ca",
+    "thal"
+  ],
+  "warning": "Educational dataset only; not for clinical use."
+}
