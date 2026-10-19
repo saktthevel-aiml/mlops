@@ -45,7 +45,8 @@ python -m src.modeling --data data/heart_disease.csv --model-dir artifacts --tra
 The download script obtains the Cleveland Heart Disease dataset through `ucimlrepo`. Training compares candidates using mean cross-validation ROC-AUC, then reports the selected model's held-out test metrics and saves its full preprocessing/model pipeline to `artifacts/model.joblib`. MLflow runs are stored locally; start the UI with:
 
 ```bash
-mlflow ui --backend-store-uri ./mlruns --host 127.0.0.1 --port 5000
+#mlflow ui --backend-store-uri ./mlruns --host 127.0.0.1 --port 5000
+mlflow ui --backend-store-uri sqlite:///mlflow.db --host 127.0.0.1 --port 5000
 ```
 
 Open http://127.0.0.1:5000.
