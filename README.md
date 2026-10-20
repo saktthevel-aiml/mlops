@@ -69,7 +69,7 @@ ruff check .
 python -m pytest -q
 ```
 
-Result: `All checks passed!` and `12 passed`. Use `python -m pytest`, not bare `pytest`, so `src` is importable.
+Result: `All checks passed!` and `12 passed`.
 
 ## Step 5 — Run the API locally
 
@@ -107,11 +107,11 @@ Or `docker compose up --build -d` (then `docker compose down`). Repeat the curl 
 
 ```bash
 minikube start --driver=docker --cpus=2 --memory=4096
-kubectl config use-context minikube
+minikube kubectl config use-context minikube
 minikube image load heart-disease-api:local
-kubectl apply -f k8s/deployment.yaml
-kubectl get pods,svc
-kubectl port-forward svc/heart-disease-api 8081:80
+minikube kubectl -- apply -f k8s/deployment.yaml
+minikube kubectl get pods,svc
+minikube kubectl port-forward svc/heart-disease-api 8081:80
 ```
 
 Expected: 2 pods `Running`. In another terminal, `curl http://127.0.0.1:8081/health` and repeat the `/predict` call on port 8081. `kubectl logs deploy/heart-disease-api` shows request logs. For a LoadBalancer IP run `minikube tunnel` (needs sudo). Clean up with `kubectl delete -f k8s/deployment.yaml` and `minikube stop`.

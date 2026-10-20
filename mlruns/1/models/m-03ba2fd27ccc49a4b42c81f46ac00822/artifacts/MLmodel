@@ -1,4 +1,4 @@
-artifact_path: /Users/skv695@apac.comcast.com/Documents/vs_code/mlops/mlops/mlruns/1/models/m-8c19dd3334204652a1712c9bb176658a/artifacts
+artifact_path: /home/s2025ae05412/workspace/mlops/mlruns/1/models/m-03ba2fd27ccc49a4b42c81f46ac00822/artifacts
 flavors:
   python_function:
     env:
@@ -7,7 +7,7 @@ flavors:
     loader_module: mlflow.sklearn
     model_path: model.pkl
     predict_fn: predict
-    python_version: 3.12.12
+    python_version: 3.12.9
   sklearn:
     code: null
     pickled_model: model.pkl
@@ -16,11 +16,11 @@ flavors:
     skops_trusted_types: null
 is_signature_from_type_hint: false
 mlflow_version: 3.17.1
-model_id: m-8c19dd3334204652a1712c9bb176658a
+model_id: m-03ba2fd27ccc49a4b42c81f46ac00822
 model_size_bytes: 4511
-model_uuid: m-8c19dd3334204652a1712c9bb176658a
+model_uuid: m-03ba2fd27ccc49a4b42c81f46ac00822
 prompts: null
-run_id: f425c6c8ddf14d9fb9f07de1c56e6100
+run_id: e29d9e8de1d14e44baa370c74509f089
 saved_input_example_info:
   artifact_path: input_example.json
   pandas_orient: split
@@ -39,4 +39,4 @@ signature:
   outputs: '[{"type": "tensor", "tensor-spec": {"dtype": "int64", "shape": [-1]}}]'
   params: null
 type_hint_from_example: false
-utc_time_created: '2026-10-20 14:13:45.774766'
+utc_time_created: '2026-10-20 15:14:45.310300'
