@@ -1,0 +1,55 @@
+{
+  "uid": "heart-disease-api",
+  "title": "Heart Disease API",
+  "schemaVersion": 39,
+  "version": 1,
+  "refresh": "10s",
+  "time": { "from": "now-15m", "to": "now" },
+  "panels": [
+    {
+      "id": 1,
+      "type": "timeseries",
+      "title": "Prediction requests per minute (by status)",
+      "gridPos": { "x": 0, "y": 0, "w": 12, "h": 8 },
+      "targets": [
+        { "expr": "sum by (status) (increase(prediction_requests_total[1m]))", "legendFormat": "{{status}}", "refId": "A" }
+      ]
+    },
+    {
+      "id": 2,
+      "type": "stat",
+      "title": "Total predictions",
+      "gridPos": { "x": 12, "y": 0, "w": 6, "h": 8 },
+      "targets": [
+        { "expr": "sum(prediction_requests_total)", "refId": "A" }
+      ]
+    },
+    {
+      "id": 3,
+      "type": "stat",
+      "title": "API up (1 = up)",
+      "gridPos": { "x": 18, "y": 0, "w": 6, "h": 8 },
+      "targets": [
+        { "expr": "up{job=\"heart-disease-api\"}", "refId": "A" }
+      ]
+    },
+    {
+      "id": 4,
+      "type": "timeseries",
+      "title": "Latency p95 (seconds)",
+      "gridPos": { "x": 0, "y": 8, "w": 12, "h": 8 },
+      "targets": [
+        { "expr": "histogram_quantile(0.95, sum by (le) (rate(prediction_request_duration_seconds_bucket[5m])))", "legendFormat": "p95", "refId": "A" }
+      ]
+    },
+    {
+      "id": 5,
+      "type": "timeseries",
+      "title": "Average latency (seconds)",
+      "gridPos": { "x": 12, "y": 8, "w": 12, "h": 8 },
+      "targets": [
+        { "expr": "rate(prediction_request_duration_seconds_sum[5m]) / rate(prediction_request_duration_seconds_count[5m])", "legendFormat": "avg", "refId": "A" }
+      ]
+    }
+  ]
+}
