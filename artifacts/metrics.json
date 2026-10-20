@@ -3,7 +3,7 @@
   "selection_metric": "mean cross-validation ROC-AUC",
   "results": [
     {
-      "run_id": "bc03c8c1a8fc49de9d30aa49a6350981",
+      "run_id": "fc7e3cf4a2c64bf389018be723bbcb5c",
       "model": "logistic_regression",
       "best_params": {
         "classifier__C": 0.1
@@ -15,7 +15,7 @@
       "test_roc_auc": 0.9577922077922079
     },
     {
-      "run_id": "b29e52fb800d4e2093d32536e4a22da5",
+      "run_id": "6812b47bdd5744cb9ee62592c7079e2b",
       "model": "random_forest",
       "best_params": {
         "classifier__max_depth": 4,

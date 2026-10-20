@@ -1,4 +1,4 @@
-artifact_path: /home/s2025ae05412/workspace/mlops/mlruns/1/models/m-aa0041e722d64470a5a5fe2a4264a005/artifacts
+artifact_path: /home/s2025ae05412/workspace/mlops/mlruns/1/models/m-fb07b2faa41b4774a87ff877de152a74/artifacts
 flavors:
   python_function:
     env:
@@ -16,11 +16,11 @@ flavors:
     skops_trusted_types: null
 is_signature_from_type_hint: false
 mlflow_version: 3.17.1
-model_id: m-aa0041e722d64470a5a5fe2a4264a005
+model_id: m-fb07b2faa41b4774a87ff877de152a74
 model_size_bytes: 4511
-model_uuid: m-aa0041e722d64470a5a5fe2a4264a005
+model_uuid: m-fb07b2faa41b4774a87ff877de152a74
 prompts: null
-run_id: bc03c8c1a8fc49de9d30aa49a6350981
+run_id: fc7e3cf4a2c64bf389018be723bbcb5c
 saved_input_example_info:
   artifact_path: input_example.json
   pandas_orient: split
@@ -39,4 +39,4 @@ signature:
   outputs: '[{"type": "tensor", "tensor-spec": {"dtype": "int64", "shape": [-1]}}]'
   params: null
 type_hint_from_example: false
-utc_time_created: '2026-10-19 21:21:23.703835'
+utc_time_created: '2026-10-20 07:11:13.245803'
